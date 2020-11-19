@@ -16,4 +16,19 @@ $("#iniciar").on('click', function(e){
         toastr.info('Empty Data','FIELD PASSWORD');
         return;
     }
+
+    var parametros = $("#frm_reg_login").serialize()+'&func=lislog';
+    var webService = "app/Controllers/listar.php";
+    var acction = "listlogin";
+    sendajaxtoserver(parametros,webService,acction);
 });
+
+function listlogin(response){
+    if(response.result=="success"){
+        var usuario = JSON.parse(response.usuario)[0];
+        set_usuario(usuario);
+        window.location = 'roles/roles.html'
+    }else{
+        toastr.error('User not register','Failed Users');
+    }
+}
