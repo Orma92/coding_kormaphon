@@ -16,12 +16,15 @@ $("#iniciar").on('click', function(e){
         toastr.info('Empty Data','FIELD PASSWORD');
         return;
     }
-
-    var parametros = $("#frm_reg_login").serialize()+'&func=lislog';
-    var webService = "app/Controllers/listar.php";
-    var acction = "listlogin";
-    sendajaxtoserver(parametros,webService,acction);
+    get_login_user();
 });
+
+function get_login_user(){
+    var parametros = $("#frm_reg_log").serialize()+'&func=lislog';
+    var webservice = "app/Controllers/listar.php";
+    var acction = "listlogin";
+    sendajaxtoserver(parametros,webservice,acction);
+}
 
 function listlogin(response){
     if(response.result=="success"){

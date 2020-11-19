@@ -2,7 +2,7 @@
 
     function listar_login($request,$con){
         $response = array();
-        $query_login = "SELECT *FROM tb_users WHERE username='".$request['username']."' AND password = sha1('".$request['password']."')";
+        $query_login = "SELECT *FROM tb_users WHERE username_user='".$request['username']."' AND password_user = sha1('".$request['password']."')";
         $result_login = mysqli_query($con, $query_login);
         if(mysqli_num_rows($result_login)>0){
             $response["result"] = "success"; 
