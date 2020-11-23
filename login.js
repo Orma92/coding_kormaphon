@@ -2,6 +2,7 @@
 includejs("resources/js/parametros.js","jslogin");
 includejs("resources/js/general.js","jslogin");
 
+//*********************** LOGIN ************************************************
 $("#iniciar").on('click', function(e){
     e.preventDefault();
     var username = $("#username").val();
@@ -17,24 +18,24 @@ $("#iniciar").on('click', function(e){
         return;
     }
 
-   login();
-  
-});
-
-function login(){
     var parametros = $("#frm_reg_log").serialize()+'&func=lislog';
     var webservice = "app/Controllers/listar.php";
     var acction = "listlogin";
     sendajaxtoserver(parametros,webservice,acction);
-}
+  
+}); 
+
+
 
 function listlogin(response){
     if(response.result=="success"){
         var usuario = JSON.parse(response.usuario)[0];
         set_usuario(usuario);
-        window.location = 'roles/roles.html'
+        window.location = 'roles/roles.html';
+        toastr.success('WELCOME','PROFILE SECCTION');
     }else{
         toastr.error('User not register','Failed Users');
     }
 }
-   
+
+//*********************** ENDLOGIN ************************************************
