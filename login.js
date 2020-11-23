@@ -17,12 +17,16 @@ $("#iniciar").on('click', function(e){
         return;
     }
 
+   login();
+  
+});
+
+function login(){
     var parametros = $("#frm_reg_log").serialize()+'&func=lislog';
     var webservice = "app/Controllers/listar.php";
     var acction = "listlogin";
     sendajaxtoserver(parametros,webservice,acction);
-  
-});
+}
 
 function listlogin(response){
     if(response.result=="success"){
