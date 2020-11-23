@@ -2,7 +2,7 @@
 
     function listar_login($request,$con){
         $response = array();
-        $query_login = "SELECT *FROM tb_users WHERE username_user='".$request['username']."' AND password_user = sha1('".$request['password']."')";
+        $query_login = "SELECT *FROM tb_user WHERE username_user='".$request['username_user']."' AND password_user = MD5('".$request['password']."')";
         $result_login = mysqli_query($con, $query_login);
         if(mysqli_num_rows($result_login)>0){
             $response["result"] = "success"; 
@@ -17,5 +17,29 @@
         }
         return $response;
     }
+
+
+
+    function existe_rol($request,$con){
+        $response=array();
+        if(isset($_SESSION["cod_user"])){
+            $sql_exi = "SELECT * FROM tb_user_roles p 
+                        WHERE p.cod_user = '".$_SESSION["cod_user"]."' 
+                        AND p.cod_rol = '".$request["cod_rol"]."'"; //pasando variables del get
+            $res_exi=mysqli_query($con,$sql_exi);
+            if(mysqli_num_rows($res_exi)>0){
+                $response["result"]="success";
+                $_SESSION["cod_rol"] = $request["cod_rol"];
+            }
+            else{
+                $response["result"]="error";
+            }
+        }else{
+            $response["result"]="error";
+        }
+        return $response;
+    }
+    
+  
 
 ?>
