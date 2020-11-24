@@ -20,9 +20,10 @@ function rolelist(response){
 
 		roles.map(function(rol,key,array){
 			var tr = '<tr>'+
-			 			  
 	                      '<td>'+rol['name_rol']+'</td>'+
 	                      '<td>'+rol['description_rol']+'</td>'+
+	                      '<td>'+rol['name_user'].toUpperCase()+'</td>'+
+			 			  '<td>'+rol['username_user']+'</td>'+
 	                      '<td>'+rol['btnslrol']+'</td>'+
                   	 '</tr>';
                tbl_roles.append(tr);

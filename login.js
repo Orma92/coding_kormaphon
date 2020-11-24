@@ -2,6 +2,8 @@
 includejs("resources/js/parametros.js","jslogin");
 includejs("resources/js/general.js","jslogin");
 
+//validate_login('modules/solicitud/registrar_solicitud.html');
+
 //*********************** LOGIN ************************************************
 $("#iniciar").on('click', function(e){
     e.preventDefault();
@@ -32,7 +34,6 @@ function listlogin(response){
         var usuario = JSON.parse(response.usuario)[0];
         set_usuario(usuario);
         window.location = 'roles/roles.html';
-        toastr.success('WELCOME','PROFILE SECCTION');
     }else{
         toastr.error('User not register','Failed Users');
     }
