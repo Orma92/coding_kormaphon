@@ -40,8 +40,8 @@ function rolelist(response){
 
 
 //***********************EXIST ROLES*************************
-$(document).on('click','.btnrol',function(e){
-	e.preventDefault();
+$(document).on('click','.btnrol',function(){
+	//e.preventDefault();
     var rol = $(this).attr('data_id');
     localStorage.setItem("rol", rol); 
     if(rol.trim() != ''){

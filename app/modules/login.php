@@ -27,8 +27,8 @@ function listar_login($request, $con){
 function existe_rol($request, $con){
 	 $response=array();
     if(isset($_SESSION["cod_user"])){
-        $sql_exi = "SELECT * FROM tb_user_roles p WHERE p.cod_user = '".$_SESSION["cod_user"]."' 
-                    AND p.cod_rol = '".$request["cod_rol"]."'"; 
+        $sql_exi = "SELECT * FROM tb_user_roles p WHERE p.cod_user = '".$_SESSION["cod_user"]."'"; 
+
         $res_exi=mysqli_query($con,$sql_exi);
         if(mysqli_num_rows($res_exi)>0){
             $response["result"]="success";
